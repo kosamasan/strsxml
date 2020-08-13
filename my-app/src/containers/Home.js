@@ -9,10 +9,14 @@ const Home = () => {
         //here you should pass data to state
         console.log(event)
     }
+
+    const fileUploadHandle = (file) => {
+        console.log(file)
+      }
     
     return <div>
         Hello
-        <UploadForm />
+        <UploadForm fileUploadHandle={fileUploadHandle} />
         {results && <div><Results data={results} /></div>}
         </div>
 }
