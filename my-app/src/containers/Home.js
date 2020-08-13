@@ -5,11 +5,6 @@ import Results from '../components/Results'
 const Home = () => {
     const [results, setResult] = useState(null)
 
-    const handleSubmit = (event) => {
-        //here you should pass data to state
-        console.log(event)
-    }
-
     const fileUploadHandle = (file) => {
         console.log(file)
       }

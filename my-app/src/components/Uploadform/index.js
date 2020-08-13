@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 const UploadForm = (props) => {
     const [uploadedFile, setUploadedFile] = useState({})
+    const [inputKey, setInputKey] = useState(Date.now())
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -13,6 +14,11 @@ const UploadForm = (props) => {
         console.log(e.target.files[0])
     }
 
+    const removeFile = () => {
+        setUploadedFile({})
+        setInputKey(Date.now())
+    }
+
     const render = () => {
         return (
             <form onSubmit={onSubmit}>
@@ -22,6 +28,7 @@ const UploadForm = (props) => {
                         accept=".png, .xml"
                         onChange={fileUploadHandle}
                         type="file"
+                        key={inputKey}
                     />
                 </label>
                 <button
@@ -30,7 +37,11 @@ const UploadForm = (props) => {
                 >
                     submit
                 </button>
-
+                {uploadedFile.name && 
+                  <div onClick={removeFile}>
+                   remove file
+                  </div>
+                }
             </form>
         )
     }
